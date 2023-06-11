@@ -1,0 +1,19 @@
+
+type GenDelegateProfile @loadModel(id: "$GENERALDELEGATEPROFILE_ID") {
+  id: ID!
+}
+
+# Delegates can create DelegateOfProfiles by using accountRef (instead of requiring DAOs to create a doc initially)
+type DelegateOfProfile @createModel(
+    accountRelation: LIST
+    description: "DAO-specific delegate profile"
+  ) {
+  daoId: DID! @accountReference
+  generalDelegateProfile: StreamID! @documentReference(model: "GenDelegateProfile")
+  profile: GenDelegateProfile! @relationDocument(property: "generalDelegateProfile")
+  intentStatement: String! @string(minLength: 25, maxLength: 100000)
+  daoRelevantQuals: String @string(minLength: 25, maxLength: 100000)
+}
+
+
+

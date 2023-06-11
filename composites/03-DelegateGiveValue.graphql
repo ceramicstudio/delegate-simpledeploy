@@ -1,0 +1,15 @@
+# DAO is the controller of this model
+type DelegateDistribution @createModel(
+    accountRelation: LIST
+    description: "A time-series data model to track, index, and analyze inferred delegate contributor value"
+  ) {
+  delegateID: DID! @accountReference
+  epochEndDate: DateTime!
+  getTokensReceived: Int! @int(min: 0) 
+  totalTokensAvailable: Int! @int(min: 0) 
+}
+
+
+
+
+
