@@ -1,6 +1,7 @@
 # Delegate is the controller of this model
 type GenDelegateProfile @createModel(accountRelation: SINGLE, description: "A basic general Delegate Profile") {
   author: DID! @documentAccount
+  version: CommitID! @documentVersion
   name: String! @string(minLength: 3, maxLength: 100)
   generalDelegateStatement: String! @string(minLength:50, maxLength:10000)
   generalValues: String @string(minLength:50, maxLength:10000)

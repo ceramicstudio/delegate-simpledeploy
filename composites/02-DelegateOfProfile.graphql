@@ -8,6 +8,7 @@ type DelegateOfProfile @createModel(
     description: "DAO-specific delegate profile"
   ) {
   author: DID! @documentAccount
+  version: CommitID! @documentVersion
   daoContractAddress: String! @string(minLength:42, maxLength:42)
   daoDID: DID @accountReference
   generalDelegateProfile: StreamID! @documentReference(model: "GenDelegateProfile")

@@ -4,6 +4,7 @@ type DelegateDistribution @createModel(
     description: "A time-series data model to track, index, and analyze inferred delegate contributor value"
   ) {
   delegateID: DID! @accountReference
+  version: CommitID! @documentVersion
   daoContractAddress: String! @string(minLength:42, maxLength:42)
   daoDID: DID @accountReference
   epochEndDate: DateTime!
