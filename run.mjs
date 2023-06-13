@@ -40,17 +40,10 @@ const delProfileComposite = await createComposite(
   "./composites/01-DelegateProfile.graphql"
 );
 
-const delOfProfileSchema = readFileSync(
-  "./composites/02-DelegateOfProfile.graphql",
-  {
-    encoding: "utf-8",
-  }
-).replace("$GENERALDELEGATEPROFILE_ID", delProfileComposite.modelIDs[0]);
-
-const delOfComposite = await Composite.create({
+const delOfComposite = await createComposite(
   ceramic,
-  schema: delOfProfileSchema,
-});
+  "./composites/02-DelegateOfProfile.graphql"
+);
 
 const delValueComposite = await createComposite(
   ceramic,
