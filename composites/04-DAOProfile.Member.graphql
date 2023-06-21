@@ -1,0 +1,8 @@
+## This is for reference only - your script will establish model access using an existing deployed composite
+type Member @loadModel(id: "$MEMBER_ID") {
+  id: ID!
+}
+
+type DAOProfile @loadModel(id: "$DAOPROFILE_ID") {
+  members: [Member] @relationFrom(model: "Member", property: "DaoProfile")
+}

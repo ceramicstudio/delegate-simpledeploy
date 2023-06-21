@@ -35,35 +35,7 @@ ceramic.did = did;
  * @return {Promise<void>} - return void when composite finishes deploying.
  */
 
-const delProfileComposite = await createComposite(
-  ceramic,
-  "./composites/01-DelegateProfile.graphql"
-);
-
-const delOfComposite = await createComposite(
-  ceramic,
-  "./composites/02-DelegateOfProfile.graphql"
-);
-
-const delValueComposite = await createComposite(
-  ceramic,
-  "./composites/03-DelegateGiveValue.graphql"
-);
-
-const composite = Composite.from([
-  delProfileComposite,
-  delOfComposite,
-  delValueComposite,
-]);
-
-//Writing composites to local file
-await writeEncodedComposite(composite, "./definition.json");
-spinner.info("creating composite for runtime usage");
-await writeEncodedCompositeRuntime(
-  ceramic,
-  "./definition.json",
-  "./definition.js"
-);
+//for partners, deploy the same definition deposite created by HireNodes, once ready
 spinner.info("deploying composite");
 const deployComposite = await readEncodedComposite(
   ceramic,
