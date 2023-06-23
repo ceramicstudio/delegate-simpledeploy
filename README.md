@@ -15,7 +15,7 @@ Once you arrive at the sentence starting with "You can now follow the existing g
 3. You can now perform your GraphQL queries using the following endpoint: `http://localhost:5005/graphql`
 
 If you want to use the client app to see an example in action, use the following directions:
-1. In your terminal, run `cd client` to enter the client folder
+1. In a new terminal, run `cd client` to enter the client folder
 2. Run `npm install` within the client directory to download the required dependencies
 3. Run `npm run dev` after your dependencies have been installed to experiment with a pre-built mutation query using your new endpoint
 4. Navigate to http://localhost:3000/ to perform mutations on your ModeSetting data model
