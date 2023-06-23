@@ -1,4 +1,4 @@
-import { readFileSync } from "fs";
+import { readFileSync, writeFileSync } from "fs";
 import { CeramicClient } from "@ceramicnetwork/http-client";
 import {
   createComposite,
@@ -21,6 +21,11 @@ const ceramic = new CeramicClient("http://localhost:7007");
 const seed = shell.exec(
   `kubectl get secrets --namespace ceramic ceramic-admin -o json | jq -r '.data."private-key"' | base64 -d`
 );
+
+//Writing your admin key to local file below, commented out, as optional
+// writeFileSync("admin_key.txt", seed.stdout, 'utf8');
+
+//Creating a new admin DID based on your private key
 const key = fromString(seed.stdout, "base16");
 const did = new DID({
   resolver: getResolver(),
@@ -35,7 +40,7 @@ ceramic.did = did;
  * @return {Promise<void>} - return void when composite finishes deploying.
  */
 
-//for partners, deploy the same definition deposite created by HireNodes, once ready
+//Deploy the prebuilt composite using the same StreamIDs already pinned by HireNodes
 spinner.info("deploying composite");
 const deployComposite = await readEncodedComposite(
   ceramic,
@@ -48,6 +53,6 @@ spinner.succeed("composite deployed & ready for use");
 spinner.succeed("compiling composite into runtime composite");
 shell.exec(`composedb composite:compile definition.json runtime-composite.json`);
 spinner.succeed("establishing graphiql server");
-shell.exec(`composedb graphql:server --graphiql runtime-composite.json --port=5005`)
+shell.exec(`composedb graphql:server --graphiql runtime-composite.json --port=5005`);
 
 
