@@ -10,8 +10,7 @@ type Member @createModel(
   ) {
   author: DID! @documentAccount
   version: CommitID! @documentVersion
-  onChainAddress: String! @string(minLength:42, maxLength:42)
-  memberID: DID @accountReference
+  memberID: DID! @accountReference
   active: Boolean!
   DaoProfile: StreamID! @documentReference(model: "DAOProfile")
   daoProfile: DAOProfile! @relationDocument(property: "DaoProfile")

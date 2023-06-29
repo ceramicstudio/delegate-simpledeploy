@@ -8,15 +8,14 @@ type DelegateCircleDistribution @createModel(
     accountRelation: LIST
     description: "A time-series data model to track, index, and analyze inferred delegate contributor value within their circles"
   ) {
-  onChainAddress: String! @string(minLength:42, maxLength:42)
-  delegateID: DID @accountReference
+  delegateID: DID! @accountReference
   version: CommitID! @documentVersion
   circleIdentifier: String! @string(minLength: 3, maxLength: 100)
   DaoProfile: StreamID! @documentReference(model: "DAOProfile")
   daoProfile: DAOProfile! @relationDocument(property: "DaoProfile")
   epochEndDate: DateTime!
   getTokensReceived: Int! @int(min: 0) 
-  totalTokensAvailable: Int! @int(min: 0) 
+  totalTokensAvailable: Int! @int(min: 0)  
 }
 
 

@@ -11,4 +11,5 @@ type ModeSetting @createModel(
 enum Mode {
   LIGHT 
   DARK 
+  SYSTEM
 }
