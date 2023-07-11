@@ -1,41 +1,40 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import { useState, useEffect } from 'react'
+import type { NextPage } from "next";
+import Head from "next/head";
+import Image from "next/image";
+import { useState, useEffect } from "react";
 import type { BasicProfile } from "@datamodels/identity-profile-basic";
-
-import ceramicLogo from '../public/ceramic.png'
-import { useCeramicContext } from '../context'
-import { authenticateCeramic } from '../utils'
-import styles from '../styles/Home.module.css'
+import ceramicLogo from "../public/ceramic.png";
+import { useCeramicContext } from "../context";
+import { authenticateCeramic } from "../utils";
+import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
-  const clients = useCeramicContext()
-  const { ceramic, composeClient } = clients
-  const [profile, setProfile] = useState<BasicProfile | undefined>()
-  const [loading, setLoading] = useState<boolean>(false)
-  const [sessionDID, setSessionDID] = useState<string | undefined>()
-  const [mode, setMode] = useState<string | undefined>()
+  const clients = useCeramicContext();
+  const { ceramic, composeClient } = clients;
+  const [profile, setProfile] = useState<BasicProfile | undefined>();
+  const [loading, setLoading] = useState<boolean>(false);
+  const [loadLight, setLoadLight] = useState<boolean>(false);
+  const [loadDark, setLoadDark] = useState<boolean>(false);
+  const [sessionDID, setSessionDID] = useState<string | undefined>();
+  const [mode, setMode] = useState<string | undefined>();
 
   const handleLogin = async () => {
     const did = await authenticateCeramic(ceramic, composeClient);
     const session = did.id;
-    if(session){
-      setSessionDID(session)
+    if (session) {
+      setSessionDID(session);
     }
-    
-  }
+  };
 
-  
   const setLight = async () => {
-    setLoading(true);
+    setLoadLight(true);
     if (ceramic.did !== undefined) {
-      const update = await fetch('http://localhost:5005/graphql', {
-        method: 'POST',
+      const update = await fetch("http://localhost:5005/graphql", {
+        method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-      
+
         body: JSON.stringify({
           query: `mutation {
             createModeSetting(
@@ -54,27 +53,27 @@ const Home: NextPage = () => {
               }
               
             }
-          }`
-        })
+          }`,
+        }),
       });
-      if(update.status === 200){
+      if (update.status === 200) {
         const result = await update.json();
         const stringified = JSON.stringify(result.data.createModeSetting);
-        setMode(stringified)
+        setMode(stringified);
       }
-      setLoading(false);
+      setLoadLight(false);
     }
-  }
+  };
 
   const setDark = async () => {
-    setLoading(true);
+    setLoadDark(true);
     if (ceramic.did !== undefined) {
-      const update = await fetch('http://localhost:5005/graphql', {
-        method: 'POST',
+      const update = await fetch("http://localhost:5005/graphql", {
+        method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-      
+
         body: JSON.stringify({
           query: `mutation {
             createModeSetting(
@@ -93,30 +92,29 @@ const Home: NextPage = () => {
               }
               
             }
-          }`
-        })
+          }`,
+        }),
       });
-      if(update.status === 200){
+      if (update.status === 200) {
         const result = await update.json();
         const stringified = JSON.stringify(result.data.createModeSetting);
-        setMode(stringified)
+        setMode(stringified);
       }
-      setLoading(false);
+      setLoadDark(false);
     }
-  }
-  
+  };
+
   /**
    * On load check if there is a DID-Session in local storage.
    * If there is a DID-Session we can immediately authenticate the user.
    * For more details on how we do this check the 'authenticateCeramic function in`../utils`.
    */
   useEffect(() => {
-    if(localStorage.getItem('did')) {
-      handleLogin()
+    if (localStorage.getItem("did")) {
+      handleLogin();
     } else {
-
     }
-  }, [ ])
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -145,28 +143,36 @@ const Home: NextPage = () => {
           </button>
         ) : (
           <>
-          <div className={styles.form}>
+            <div style={{"marginBottom": "1rem"}} className={styles.form}>
               <button
-              onClick={() => {
-                setDark();
-              }}>
-                {loading ? 'Loading...' : 'Set Dark'}
+                onClick={() => {
+                  setDark();
+                }}
+              >
+                {loadDark ? "Loading..." : "Set Dark"}
               </button>
               <button
-              onClick={() => {
-                setLight();
-              }}>
-                {loading ? 'Loading...' : 'Set Light'}
+                onClick={() => {
+                  setLight();
+                }}
+              >
+                {loadLight ? "Loading..." : "Set Light"}
               </button>
-             
-          </div>
-           <textarea value={mode} style={{"width": "75%", "height": "40%", "borderRadius": "5%", "padding": "2%"}}></textarea>
-           </>
+            </div>
+            <textarea
+              value={mode}
+              style={{
+                width: "75%",
+                height: "40%",
+                borderRadius: "5%",
+                padding: "2%",
+              }}
+            ></textarea>
+          </>
         )}
       </main>
-
     </div>
   );
-}
+};
 
-export default Home
+export default Home;

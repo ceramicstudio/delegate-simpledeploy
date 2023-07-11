@@ -1,12 +1,6 @@
-import { readFileSync, writeFileSync } from "fs";
+import { writeFileSync } from "fs";
 import { CeramicClient } from "@ceramicnetwork/http-client";
-import {
-  createComposite,
-  readEncodedComposite,
-  writeEncodedComposite,
-  writeEncodedCompositeRuntime,
-} from "@composedb/devtools-node";
-import { Composite } from "@composedb/devtools";
+import { readEncodedComposite } from "@composedb/devtools-node";
 import shell from "shelljs";
 import { fromString } from "uint8arrays/from-string";
 import { DID } from "dids";
@@ -51,8 +45,10 @@ spinner.info(`Deployed the following models: ${id}`);
 await deployComposite.startIndexingOn(ceramic);
 spinner.succeed("composite deployed & ready for use");
 spinner.succeed("compiling composite into runtime composite");
-shell.exec(`composedb composite:compile definition.json runtime-composite.json`);
+shell.exec(
+  `composedb composite:compile definition.json runtime-composite.json`
+);
 spinner.succeed("establishing graphiql server");
-shell.exec(`composedb graphql:server --graphiql runtime-composite.json --port=5005`);
-
-
+shell.exec(
+  `composedb graphql:server --graphiql runtime-composite.json --port=5005`
+);
