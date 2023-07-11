@@ -1,4 +1,6 @@
-# SimpleDeploy
+# SimpleDeploy - DAO Delegate RFC Version
+
+This repository was tailored specifically for a request for commend (RFC) related to DAO Delegate identity and reputation. If you are simply looking to get started running Ceramic in the cloud, please reference the generalized [simpledeploy](https://github.com/ceramicstudio/simpledeploy) repository.
 
 This guide explains how to run a pre-built cloud deployment, which references [this guide](https://composedb.js.org/docs/0.4.x/guides/composedb-server/running-in-the-cloud).
 
