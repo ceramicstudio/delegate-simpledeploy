@@ -6,6 +6,8 @@ As explained in the guide, you will need to install the command line tools for K
 
 You must then create a Kubernetes Cluster [guide here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/)
 
+Follow each step carefully to make sure you're able to successfully authenticate yourself based on your personal access token.
+
 Continue following the guide (and ignore #1 of the "Clone the simpledeploy repository" section since the repository you are current in replaces that).
 
 Once you arrive at the sentence starting with "You can now follow the existing guides" use the following steps:
