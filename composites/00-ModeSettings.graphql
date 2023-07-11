@@ -1,8 +1,7 @@
 # User is the controller of this model
-## This is for reference only - your script will establish model access using an existing deployed composite
 type ModeSetting @createModel(
     accountRelation: SINGLE
-    description: "A mode settings primitive that allows users to toggle between light and dark"
+    description: "A mode settings primitive that allows users to toggle between light, dark, and system settings"
   ) {
     author: DID! @documentAccount
     mode: Mode!
@@ -13,3 +12,18 @@ enum Mode {
   DARK 
   SYSTEM
 }
+
+# mutation{
+#       createModeSetting(
+#         input: {
+#           content: {
+#             mode: DARK
+#           }
+#         }
+#       ) {
+#         document {
+#           mode
+#         }
+        
+#       }
+#     }

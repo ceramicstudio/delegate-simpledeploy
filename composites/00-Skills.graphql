@@ -1,0 +1,48 @@
+# User is the controller of this model
+type Skills @createModel(
+    accountRelation: SINGLE
+    description: "Standardized skills model for DAO contributors"
+  ){
+  author: DID! @documentAccount
+  peopleAndGovernance: Boolean
+  developmentEngineering: Boolean
+  growthAndMarketing: Boolean
+  daoTeams: Boolean
+  communityManagement: Boolean
+  discord: Boolean
+  socialMedia: Boolean
+  budgetManagement: Boolean
+  compensation: Boolean
+  grants: Boolean
+  web3: Boolean
+  frontEnd: Boolean
+  backEnd: Boolean
+  fullStack: Boolean
+  UX: Boolean
+  UI: Boolean
+  productDesign: Boolean
+  devOps: Boolean
+  projectManagement: Boolean
+  security: Boolean
+  memes: Boolean
+  art: Boolean
+  NFTs: Boolean
+  graphics: Boolean
+  branding: Boolean
+  threeD: Boolean
+  video: Boolean
+  communications: Boolean
+  translation: Boolean
+  docs: Boolean
+  writing: Boolean
+  podcasting: Boolean
+  strategy: Boolean
+  treaturyManagement: Boolean
+  contractAudits: Boolean
+  multisigs: Boolean
+  dataAnalysis: Boolean
+  risk: Boolean
+  tokenomics: Boolean
+  contributorExperience: Boolean
+  other: String @string(maxLength:200)
+}

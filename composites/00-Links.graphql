@@ -1,0 +1,19 @@
+# User is the controller of this model
+type Links @createModel(
+    accountRelation: SINGLE
+    description: "A universal links primitive designed to span various use-cases"
+  ) {
+    author: DID! @documentAccount
+    twitter: String @string(maxLength:200)
+    github: String @string(maxLength:200)
+    telegram: String @string(maxLength:200)
+    discord: String @string(maxLength:200)
+    medium: String @string(maxLength:200)
+    website: String @string(maxLength:200)
+    other: [PlatformUser] @list(maxLength: 100)
+}
+
+type PlatformUser {
+  platformName: String! @string(maxLength:200)
+  userName: String! @string(maxLength:200)
+}

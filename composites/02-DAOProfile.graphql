@@ -1,5 +1,4 @@
 # Individual DAO is the controller of this model
-## This is for reference only - your script will establish model access using an existing deployed composite
 type DAOProfile @createModel(
     accountRelation: LIST
     description: "A simple DAO identifier model"
@@ -11,3 +10,20 @@ type DAOProfile @createModel(
   description: String @string(maxLength:100000)
 }
 
+
+#  mutation{
+#       createDAOProfile(
+#         input: {
+#           content: {
+#             daoContractAddress: "0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984"
+#             name: "thsaodifjaoiefoiajwefoijwaeifjowaijefoiawjofijaweofijawoeifaowejfoiawejfoiawjef"
+#           }
+#         }
+#       ) {
+#         document {
+#           name
+#           daoContractAddress
+#         }
+        
+#       }
+#     }

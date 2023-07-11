@@ -1,0 +1,41 @@
+type ModeSetting @loadModel(id: "$MODESETTING_ID") {
+  id: ID!
+}
+
+type Links @loadModel(id: "$LINKS_ID") {
+  id: ID!
+}
+
+type Skills @loadModel(id: "$SKILLS_ID") {
+  id: ID!
+}
+
+# User is the controller of this model
+type GeneralProfile @createModel(accountRelation: SINGLE, description: "A basic general profile") {
+  author: DID! @documentAccount
+  firstName: String @string(maxLength:200)
+  lastName: String @string(maxLength:200)
+  Mode: StreamID @documentReference(model: "ModeSetting")
+  mode: ModeSetting @relationDocument(property: "Mode")
+  skillsId: StreamID @documentReference(model: "Skills")
+  skills: Skills @relationDocument(property: "skillsId")
+  linksId: StreamID @documentReference(model: "Links")
+  links: Links @relationDocument(property: "linksId")
+}
+
+#  mutation{
+#       createGenDelegateProfile(
+#         input: {
+#           content: {
+#             name: "Mark Krasner"
+#             generalDelegateStatement: "thsaodifjaoiefoiajwefoijwaeifjowaijefoiawjofijaweofijawoeifaowejfoiawejfoiawjef"
+#           }
+#         }
+#       ) {
+#         document {
+#           name
+#           generalDelegateStatement
+#         }
+        
+#       }
+#     }

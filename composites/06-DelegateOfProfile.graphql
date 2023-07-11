@@ -1,0 +1,31 @@
+type DAOProfile @loadModel(id: "$DAOPROFILE_ID") {
+  id: ID!
+}
+
+# Delegate is the controller of this model
+type DelegateOfProfile @createModel(
+    accountRelation: LIST
+    description: "DAO-specific delegate profile"
+  ) {
+  author: DID! @documentAccount
+  version: CommitID! @documentVersion
+  DaoProfile: StreamID! @documentReference(model: "DAOProfile")
+  daoProfile: DAOProfile! @relationDocument(property: "DaoProfile")
+  intentStatement: String! @string(minLength: 25, maxLength: 100000)
+  daoRelevantQuals: String @string(minLength: 25, maxLength: 100000)
+}
+
+# mutation{
+#       createDelegateOfProfile(
+#         input: {
+#           content: {
+#             intentStatement: "this is my intent statement this is my intent statement hello hello"
+#           }
+#         }
+#       ) {
+#         document {
+#           id
+#           intentStatement
+#         }
+#       }
+#     }

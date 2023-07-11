@@ -1,0 +1,16 @@
+type DAOProfile @loadModel(id: "$DAOPROFILE_ID") {
+  id: ID!
+}
+
+# Contributor is the controller of this model
+type ContributorProfile @createModel(
+    accountRelation: LIST
+    description: "DAO-specific individual-authored contributor profile"
+  ) {
+  author: DID! @documentAccount
+  version: CommitID! @documentVersion
+  DaoProfile: StreamID! @documentReference(model: "DAOProfile")
+  daoProfile: DAOProfile! @relationDocument(property: "DaoProfile")
+  contributorBio: String! @string(minLength: 25, maxLength: 100000)
+  optionalAddition: String @string(minLength: 25, maxLength: 100000)
+}
