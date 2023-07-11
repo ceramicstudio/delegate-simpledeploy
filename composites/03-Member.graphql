@@ -16,28 +16,4 @@ type Member @createModel(
 }
 
 
-#  mutation{
-#       createMember(
-#         input: {
-#           content: {
-#             onChainAddress: "0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984"
-#             active: true
-#             memberID: "did:key:z6Mkv4PjTDQNXpGHSEz7P3QNiSjXvfWg3kM8uRABkXNpHasj"
-#               DaoProfile: "kjzl6kcym7w8yb5hgp93t4dncpde1xkottsbodqz5u03imkwrqti5ei7rkwingv"
-            
-    
-#           }
-#         }
-#       ) {
-#         document {
-#           id
-#           onChainAddress
-#           active
-#           memberID{
-#             id
-#           }
-#           DaoProfile
-#         }
-        
-#       }
-#     }
+

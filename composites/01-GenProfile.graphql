@@ -23,19 +23,3 @@ type GeneralProfile @createModel(accountRelation: SINGLE, description: "A basic 
   links: Links @relationDocument(property: "linksId")
 }
 
-#  mutation{
-#       createGenDelegateProfile(
-#         input: {
-#           content: {
-#             name: "Mark Krasner"
-#             generalDelegateStatement: "thsaodifjaoiefoiajwefoijwaeifjowaijefoiawjofijaweofijawoeifaowejfoiawejfoiawjef"
-#           }
-#         }
-#       ) {
-#         document {
-#           name
-#           generalDelegateStatement
-#         }
-        
-#       }
-#     }

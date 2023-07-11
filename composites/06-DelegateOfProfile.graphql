@@ -15,17 +15,3 @@ type DelegateOfProfile @createModel(
   daoRelevantQuals: String @string(minLength: 25, maxLength: 100000)
 }
 
-# mutation{
-#       createDelegateOfProfile(
-#         input: {
-#           content: {
-#             intentStatement: "this is my intent statement this is my intent statement hello hello"
-#           }
-#         }
-#       ) {
-#         document {
-#           id
-#           intentStatement
-#         }
-#       }
-#     }
