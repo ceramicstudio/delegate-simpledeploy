@@ -2,18 +2,6 @@ type DAOProfile @loadModel(id: "$DAOPROFILE_ID") {
   id: ID!
 }
 
-type GeneralProfile @loadModel(id: "$GENERALPROFILE_ID") {
-  id: ID!
-}
-
-type DelegateOfProfile @loadModel(id: "$DELEGATEOFPROFILE_ID") {
-  id: ID!
-}
-
-type ContributorProfile @loadModel(id: "$CONTRIBUTORPROF_ID") {
-  id: ID!
-}
-
 # Member is the controller of this model
 type MemberProfile @createModel(
     accountRelation: LIST
@@ -23,12 +11,6 @@ type MemberProfile @createModel(
   version: CommitID! @documentVersion
   DaoProfile: StreamID! @documentReference(model: "DAOProfile")
   daoProfile: DAOProfile! @relationDocument(property: "DaoProfile")
-  genProfileId: StreamID @documentReference(model: "GeneralProfile")
-  genProfile: GeneralProfile @relationDocument(property: "genProfileId")
-  delegateOfProfile: StreamID @documentReference(model: "DelegateOfProfile")
-  delegateOf: DelegateOfProfile @relationDocument(property: "delegateOfProfile")
-  contributorId: StreamID @documentReference(model: "ContributorProfile")
-  contributor: ContributorProfile @relationDocument(property: "contributorId")
   memberBio: String! @string(minLength: 25, maxLength: 100000)
   optionalAddition: String @string(minLength: 25, maxLength: 100000)
 }
