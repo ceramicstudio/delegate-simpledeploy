@@ -34,7 +34,20 @@
     },
     "indexing": {
         "db": "postgres://${CERAMIC_INDEXING_DB_USERNAME}:${CERAMIC_INDEXING_DB_PASSWORD}@postgres/ceramic",
-        "allow-queries-before-historical-sync": true,
+        "allow-queries-before-historical-sync": false,
+        "models": [
+            "kjzl6hvfrbw6c65fzjftv3lkhqukika2cs9j9u4liknv2nuagutuem2uqi5p2j8",
+            "kjzl6hvfrbw6c780qd003c4p0m01fvnjm6ux26jofrxmkah5jsia1ha1b6hx66o",
+            "kjzl6hvfrbw6c9x2ieu02lkkoxgkxw4cm0p2z1r3x0lrfiu84w249m72jwpqys2",
+            "kjzl6hvfrbw6cb7ymo25ee4kh5st0i6l4aw1gh1jax0dsdz4onz3523uoqbckrr",
+            "kjzl6hvfrbw6c9comrls1u3imfz3zosnirtpb9tnrvaqci3zqx29tw6b2uoxx0i",
+            "kjzl6hvfrbw6c9fn3ekwfnhpipbmsfv9iu7a4cciu7qio22m4hgpp6fjuuwvhx7",
+            "kjzl6hvfrbw6c5so9ys2be0u3lk4gskj2vdq72ns467q0kzj2r1jcxvmf4urrxs",
+            "kjzl6hvfrbw6cat0n2kxdd9dwghn4l4omxjt0qnlo8kp9d7icpkivszof6fut4l",
+            "kjzl6hvfrbw6c9l8n81jj8trukdl91rk5gua4j1eqbomffj11r9ti0cy8tpsbyl",
+            "kjzl6hvfrbw6c8a9vkff53zgt6xl7rz14yqit3ypjbsjoiw0me4dsvr6cv41jps",
+            "kjzl6hvfrbw6c7af59okpihpzvtpzkvnc7gdcwrt7ldx0xdjuje6exdjpqlgioy"
+          ],
         "enable-historical-sync": true
     }
 }
